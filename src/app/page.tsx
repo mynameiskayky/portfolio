@@ -12,10 +12,10 @@ export default function Home() {
 
       <header className="mx-auto relative grid max-w-7xl grid-cols-12 border-l border-neutral-700">
         <div className="relative flex w-full">
-          <h1 className="text-[10.25rem] w-fit z-50 text-neutral-100 font-bold pl-8 -tracking-wider">
+          <h1 className="text-[7.25rem] font-display w-fit z-50 text-neutral-100 font-bold pl-8 -tracking-wider">
             Kayky.
           </h1>
-          <span className="px-4 py-2 rounded-full whitespace-nowrap h-fit mt-8 font-bold text-base bg-[#E1FF2D] text-[#294B07]">
+          <span className="px-4 py-2 rounded-full font-display whitespace-nowrap h-fit mt-8 font-bold text-base bg-[#E1FF2D] text-[#294B07]">
             Good Night!
           </span>
         </div>
