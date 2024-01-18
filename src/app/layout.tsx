@@ -5,7 +5,7 @@ import "./globals.css";
 const satoshi = localFont({
   src: [
     {
-      path: "../fonts/satoshi/Satoshi-Medium.ttf",
+      path: "./fonts/satoshi/Satoshi-Medium.ttf",
     },
   ],
   variable: "--font-satoshi",
@@ -14,7 +14,7 @@ const satoshi = localFont({
 const messapia = localFont({
   src: [
     {
-      path: "../fonts/Messapia-Bold.otf",
+      path: "./fonts/Messapia-Bold.otf",
     },
   ],
   variable: "--font-messapia",

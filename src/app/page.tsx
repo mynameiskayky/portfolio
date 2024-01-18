@@ -1,4 +1,29 @@
+"use client";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+
+interface NowPlayingSong {
+  album: string;
+  albumImageUrl: string;
+  artists: string;
+  isPlaying: boolean;
+  songUrl: string;
+  title: string;
+}
+
 export default function Home() {
+  const [song, setSong] = useState<NowPlayingSong>();
+
+  useEffect(() => {
+    async function getData() {
+      const response = await fetch("/api/now-playing");
+      const data: NowPlayingSong = await response.json();
+      setSong(data);
+    }
+
+    getData();
+  }, [song]);
+
   return (
     <main className="">
       <div className="border-b border-neutral-700">
@@ -16,7 +41,7 @@ export default function Home() {
             Kayky.
           </h1>
           <span className="px-4 py-2 rounded-full font-display whitespace-nowrap h-fit mt-8 font-bold text-base bg-[#E1FF2D] text-[#294B07]">
-            Good Night!
+            Good Afternoon!
           </span>
         </div>
 
@@ -28,22 +53,26 @@ export default function Home() {
           <div className="flex items-center gap-2">
             <div className="h-2 w-2 animate-pulse rounded-full bg-[#74DA0D]" />
             <p className="text-neutral-500 font-medium text-sm">
-              Codando && Ouvindo
+              Coding && Listening
             </p>
           </div>
           <div className="h-[1px] w-11/12 bg-neutral-700" />
           <div className="flex items-center gap-5">
             <div className="text-right">
-              <h4 className="font-bold text-lg text-neutral-100">
-                Você Está Com Febre?
-              </h4>
+              <Link
+                href={song?.songUrl || ""}
+                passHref={true}
+                className="font-bold text-lg text-neutral-100"
+              >
+                {song?.title}
+              </Link>
               <p className="font-medium text-sm text-neutral-400">
-                Febre90s, PumaPjl
+                {song?.artists}
               </p>
             </div>
             <img
               className="h-12 w-12 rounded-full animate-[spin_3s_linear_infinite]"
-              src="https://i.scdn.co/image/ab67616d0000b2730bb4807628d14055f19141af"
+              src={song?.albumImageUrl}
               alt="Você Está Com Febre?"
             />
           </div>
