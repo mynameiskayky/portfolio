@@ -12,6 +12,7 @@ interface NowPlayingSong {
 }
 
 export default function Home() {
+  const [greeting, setGreeting] = useState<string>("");
   const [song, setSong] = useState<NowPlayingSong>();
 
   useEffect(() => {
@@ -23,6 +24,22 @@ export default function Home() {
 
     getData();
   }, [song]);
+
+  useEffect(() => {
+    const determineGreeting = () => {
+      const currentHour = new Date().getHours();
+
+      if (currentHour >= 5 && currentHour < 12) {
+        setGreeting("Good Morning");
+      } else if (currentHour >= 12 && currentHour < 18) {
+        setGreeting("Good Afternoon");
+      } else {
+        setGreeting("Good evening");
+      }
+    };
+
+    determineGreeting();
+  }, []);
 
   return (
     <main className="">
@@ -40,9 +57,11 @@ export default function Home() {
           <h1 className="text-[7.25rem] font-display w-fit z-50 text-neutral-100 font-bold pl-8 -tracking-wider">
             Kayky.
           </h1>
-          <span className="px-4 py-2 rounded-full font-display whitespace-nowrap h-fit mt-8 font-bold text-base bg-[#E1FF2D] text-[#294B07]">
-            Good Afternoon!
-          </span>
+          {greeting && (
+            <span className="px-4 py-2 rounded-full font-display whitespace-nowrap h-fit mt-8 font-bold text-base bg-[#E1FF2D] text-[#294B07]">
+              {greeting}!
+            </span>
+          )}
         </div>
 
         <div className="col-span-3 border-r border-neutral-700" />
