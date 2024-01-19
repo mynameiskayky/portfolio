@@ -28,9 +28,11 @@ export default function Home() {
       const data: NowPlayingSong = await response.json();
       setSong(data);
     }
-
     getData();
-  }, [song]);
+
+    const intervalId = setInterval(getData, 1500);
+    return () => clearInterval(intervalId);
+  }, []);
 
   useEffect(() => {
     const determineGreeting = () => {
