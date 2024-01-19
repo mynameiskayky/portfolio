@@ -1,6 +1,13 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Sign from "../../public/sign";
+import {
+  GithubLogo,
+  DribbbleLogo,
+  LinkedinLogo,
+  Envelope,
+} from "@phosphor-icons/react";
 
 interface NowPlayingSong {
   album: string;
@@ -42,7 +49,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="">
+    <main className="grid">
       <div className="border-b border-neutral-700">
         <div className="mx-auto grid h-12 max-w-7xl grid-cols-12">
           <div className="col-span-4 border-x border-neutral-700" />
@@ -51,7 +58,6 @@ export default function Home() {
           <div className="col-span-4 border-r border-neutral-700" />
         </div>
       </div>
-
       <header className="mx-auto relative grid max-w-7xl grid-cols-12 border-l border-neutral-700">
         <div className="relative flex w-full">
           <h1 className="text-[7.25rem] font-display w-fit z-50 text-neutral-100 font-bold pl-8 -tracking-wider">
@@ -98,7 +104,43 @@ export default function Home() {
         </div>
       </header>
 
-      <div className="border-b w-screen border-neutral-700" />
+      <div className="border-b border-neutral-700" />
+
+      <section className="border-x w-screen border-neutral-700 mx-auto relative grid max-w-7xl grid-cols-12">
+        <div className="col-span-4 p-8">
+          <h4 className="text-[2.5rem] font-bold mb-6">About me</h4>
+          <p className="text-lg text-neutral-300 mb-3">
+            I am Kayky, a{" "}
+            <span className="font-medium text-neutral-50">
+              Frontend Developer
+            </span>{" "}
+            passionate about the intersection of art and code.
+          </p>
+          <p className="text-lg text-neutral-300 mb-10">
+            With{" "}
+            <span className="font-medium text-neutral-50">
+              over 2 years of experience in developing unique products
+            </span>
+            , my true passion is crafting high-performance applications that
+            showcase the visual excellence of original design.
+          </p>
+
+          <Sign />
+
+          <div className="w-full flex items-end mt-2 flex-col gap-3">
+            <h5 className="text-lg font-bold text-neutral-100">Find me at</h5>
+            <aside className="flex gap-2">
+              <Envelope className="border w-8 h-8 border-neutral-700 p-[7px] rounded-full text-neutral-100" />
+              <DribbbleLogo className="border w-8 h-8 border-neutral-700 p-[7px] rounded-full text-neutral-100" />
+              <GithubLogo className="border w-8 h-8 border-neutral-700 p-[7px] rounded-full text-neutral-100" />
+              <LinkedinLogo className="border w-8 h-8 border-neutral-700 p-[7px] rounded-full text-neutral-100" />
+            </aside>
+          </div>
+        </div>
+        <div className="border-neutral-700 border-x col-span-4 p-8"></div>
+      </section>
+
+      <div className="border-b border-neutral-700" />
     </main>
   );
 }

@@ -5,7 +5,16 @@ import "./globals.css";
 const satoshi = localFont({
   src: [
     {
+      path: "./fonts/satoshi/Satoshi-Regular.ttf",
+      weight: "normal",
+    },
+    {
       path: "./fonts/satoshi/Satoshi-Medium.ttf",
+      weight: "500",
+    },
+    {
+      path: "./fonts/satoshi/Satoshi-Bold.ttf",
+      weight: "bold",
     },
   ],
   variable: "--font-satoshi",
