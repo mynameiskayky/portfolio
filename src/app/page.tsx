@@ -110,7 +110,7 @@ export default function Home() {
         <div className="col-span-4 p-8">
           <h4 className="text-[2.5rem] font-bold mb-6">About me</h4>
           <p className="text-lg text-neutral-300 mb-3">
-            I am Kayky, a{" "}
+            I&#39;m Kayky, a{" "}
             <span className="font-medium text-neutral-50">
               Frontend Developer
             </span>{" "}
@@ -137,7 +137,24 @@ export default function Home() {
             </aside>
           </div>
         </div>
-        <div className="border-neutral-700 border-x col-span-4 p-8"></div>
+        <div className="border-neutral-700 border-x col-span-4 p-8 select-none">
+          <div className="relative grid place-items-center w-full h-full">
+            <div className="bg-gradient-to-b from-neutral-900/10 from-10% via-neutral-900/70 via-55% to-neutral-900/90 to-90% rounded-2xl w-full h-full absolute" />
+            <div className="border border-neutral-600 absolute inset-4 rounded-2xl" />
+            <img
+              src={"/me.jpg"}
+              alt="asd"
+              className="w-full h-full rounded-2xl border-t border-neutral-400 object-cover"
+            />
+            <div className="absolute bottom-6 p-1 flex items-center gap-1 rounded-full border border-neutral-700 bg-gradient-to-br from-neutral-900/60 via-neutral-400/20 to-transparent backdrop-filter backdrop-blur-12.5">
+              <div className="w-2 h-2 rounded-full bg-neutral-400" />
+              <div className="w-2 h-2 rounded-full bg-neutral-400" />
+              <div className="w-2.5 h-2.5 rounded-full bg-neutral-100" />
+              <div className="w-2 h-2 rounded-full bg-neutral-400" />
+              <div className="w-2 h-2 rounded-full bg-neutral-400" />
+            </div>
+          </div>
+        </div>
       </section>
 
       <div className="border-b border-neutral-700" />
