@@ -8,6 +8,7 @@ import {
   LinkedinLogo,
   Envelope,
 } from "@phosphor-icons/react";
+import Image from "next/image";
 
 interface NowPlayingSong {
   album: string;
@@ -33,6 +34,23 @@ export default function Home() {
     const intervalId = setInterval(getData, 1500);
     return () => clearInterval(intervalId);
   }, []);
+
+  async function getStatusCoding() {
+    try {
+      const api = "https://api.wakatime.com/api/v1/?api_key=waka_b417987d-ce91-4ec2-82e2-8046080a8a6d";
+      const apiKey = "waka_b417987d-ce91-4ec2-82e2-8046080a8a6d";
+      const encodedKey = btoa(apiKey);
+      const headers = {
+        "Authorization": `Basic ${apiKey}`
+      };
+      const response = await fetch(`${api}users/current/stats`);
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error("Erro ao buscar os dados de codificação", error);
+    }
+  }
+  getStatusCoding();
 
   useEffect(() => {
     const determineGreeting = () => {
@@ -139,6 +157,7 @@ export default function Home() {
             </aside>
           </div>
         </div>
+
         <div className="border-neutral-700 border-x col-span-4 p-8 select-none">
           <div className="relative grid place-items-center w-full h-full">
             <div className="bg-gradient-to-b from-neutral-900/10 from-10% via-neutral-900/70 via-55% to-neutral-900/90 to-90% rounded-2xl w-full h-full absolute" />
@@ -155,6 +174,108 @@ export default function Home() {
               <div className="w-2 h-2 rounded-full bg-neutral-400" />
               <div className="w-2 h-2 rounded-full bg-neutral-400" />
             </div>
+          </div>
+        </div>
+
+        <div className="col-span-4 p-8 flex flex-col gap-8 relative">
+          <div>
+            <h3 className="text-neutral-100 font-bold text-2xl pb-4">
+              Education
+            </h3>
+
+            <div className="flex items-start gap-6">
+              <span className="font-medium min-w-[66px] text-[10px] leading-5 text-neutral-400">
+                2022 — 2025
+              </span>
+              <div className="grid gap-1">
+                <h4 className="font-medium text-base text-neutral-200 leading-5">
+                  Bachelor&#39;s Degree in Software Engineering
+                </h4>
+                <p className="text-[10px] text-neutral-400">at Unicesumar</p>
+              </div>
+            </div>
+          </div>
+          <div className="grid gap-3">
+            <h3 className="text-neutral-100 font-bold text-2xl pb-1">
+              Experience
+            </h3>
+
+            <div className="flex items-start gap-6">
+              <span className="font-medium min-w-[66px] text-[10px] leading-5 text-neutral-400">
+                2023 — Now
+              </span>
+              <div className="grid gap-1">
+                <h4 className="font-medium text-base text-neutral-200 leading-5">
+                  Front-end Developer
+                </h4>
+                <p className="text-[10px] text-neutral-400">as Freelancer</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-6">
+              <span className="font-medium min-w-[66px] text-[10px] leading-5 text-neutral-400">
+                2022 — 2024
+              </span>
+              <div className="grid gap-1">
+                <h4 className="font-medium text-base text-neutral-200 leading-5">
+                  Front-end Developer
+                </h4>
+                <p className="text-[10px] text-neutral-400">at Lumx</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="absolute grid gap-4 text-center inset-x-8 bottom-8 p-2 justify-center border-t border-neutral-700">
+            <h5 className="font-medium pt-2 text-sm text-neutral-500">
+              Companies I&#39;ve collaborated with
+            </h5>
+            <aside className="relative -mx-8 overflow-hidden">
+              <div className="flex justify-center animate-wiggle items-center gap-6 text-red-700 fill-teal-500 stroke-red-800">
+                <Image
+                  priority
+                  width={180}
+                  height={40}
+                  src="/surfie-junkie-vlub.svg"
+                  alt="Surfie Junkie Logo"
+                />
+                <Image
+                  priority
+                  width={180}
+                  height={40}
+                  src="/nestle.svg"
+                  alt="Nestlé Logo"
+                />
+                <Image
+                  width={180}
+                  height={40}
+                  priority
+                  className="stroke-neutral-50 fill-white text-neutral-50"
+                  src="/reserva.svg"
+                  alt="Reserva Logo"
+                />
+                <Image
+                  priority
+                  width={180}
+                  height={40}
+                  className="stroke-white text-neutral-50"
+                  src="/surfie-junkie-vlub.svg"
+                  alt="Surfie Junkie Logo"
+                />
+                <Image
+                  priority
+                  width={180}
+                  height={40}
+                  src="/nestle.svg"
+                  alt="Nestlé Logo"
+                />
+                <Image
+                  width={180}
+                  height={40}
+                  priority
+                  src="/reserva.svg"
+                  alt="Reserva Logo"
+                />
+              </div>
+            </aside>
           </div>
         </div>
       </section>
