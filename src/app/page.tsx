@@ -35,22 +35,7 @@ export default function Home() {
     return () => clearInterval(intervalId);
   }, []);
 
-  async function getStatusCoding() {
-    try {
-      const api = process.env.WAKATIME_API_KEY;
-      const apiKey = "waka_b417987d-ce91-4ec2-82e2-8046080a8a6d";
-      const encodedKey = btoa(apiKey);
-      const headers = {
-        Authorization: `Basic ${apiKey}`,
-      };
-      const response = await fetch(`${api}users/current/stats`);
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.error("Erro ao buscar os dados de codificação", error);
-    }
-  }
-  getStatusCoding();
+  // Removido o código relacionado ao Wakatime
 
   useEffect(() => {
     const determineGreeting = () => {
