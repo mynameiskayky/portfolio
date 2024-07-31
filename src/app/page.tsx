@@ -37,11 +37,11 @@ export default function Home() {
 
   async function getStatusCoding() {
     try {
-      const api = "https://api.wakatime.com/api/v1/?api_key=waka_b417987d-ce91-4ec2-82e2-8046080a8a6d";
+      const api = process.env.WAKATIME_API_KEY;
       const apiKey = "waka_b417987d-ce91-4ec2-82e2-8046080a8a6d";
       const encodedKey = btoa(apiKey);
       const headers = {
-        "Authorization": `Basic ${apiKey}`
+        Authorization: `Basic ${apiKey}`,
       };
       const response = await fetch(`${api}users/current/stats`);
       const data = await response.json();
