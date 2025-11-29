@@ -1,26 +1,181 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/**
+ * DESIGN TOKENS & CSS VARIABLES
+ * Following Tailwind CSS 4+ syntax with @theme inline
+ */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  /* Colors */
+  --color-background: #FFFFFF;
+  --color-background-secondary: #F8F9FA;
+  --color-background-accent: #000000;
+
+  --color-foreground: #0A0A0A;
+  --color-foreground-secondary: #6B7280;
+  --color-foreground-accent: #3B82F6;
+
+  --color-border: #E5E7EB;
+
+  --color-accent-blue: #3B82F6;
+  --color-accent-purple: #9333EA;
+
+  /* Typography */
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-cabinet);
   --font-mono: var(--font-geist-mono);
+
+  /* Font sizes with fluid typography */
+  --font-size-display-lg: clamp(3rem, 8vw, 7rem);
+  --font-size-display-md: clamp(2rem, 5vw, 4rem);
+  --font-size-display-sm: clamp(1.5rem, 3vw, 2.5rem);
+  --font-size-h1: clamp(2rem, 4vw, 3rem);
+  --font-size-h2: clamp(1.5rem, 3vw, 2rem);
+  --font-size-h3: clamp(1.25rem, 2vw, 1.5rem);
+  --font-size-body-lg: 1.125rem;
+  --font-size-body: 1rem;
+  --font-size-body-sm: 0.875rem;
+
+  /* Spacing (8px grid) */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 4rem;
+  --spacing-3xl: 6rem;
+  --spacing-4xl: 8rem;
+
+  /* Container */
+  --container-max-width: 90rem;
+  --container-padding-mobile: 1.5rem;
+  --container-padding-desktop: 3rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/**
+ * BASE STYLES
+ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+}
+
+/**
+ * CUSTOM UTILITIES
+ */
+
+/* Display font family */
+.font-display {
+  font-family: var(--font-display), system-ui, -apple-system, sans-serif;
+}
+
+/* Display font sizes */
+.text-display-lg {
+  font-size: var(--font-size-display-lg);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.text-display-md {
+  font-size: var(--font-size-display-md);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.text-display-sm {
+  font-size: var(--font-size-display-sm);
+  line-height: 1.3;
+}
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(to right, var(--color-accent-blue), var(--color-accent-purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Container utility */
+.container-custom {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding-mobile);
+  padding-right: var(--container-padding-mobile);
+}
+
+@media (min-width: 768px) {
+  .container-custom {
+    padding-left: var(--container-padding-desktop);
+    padding-right: var(--container-padding-desktop);
+  }
+}
+
+/* Section spacing */
+.section-spacing {
+  padding-top: var(--spacing-3xl);
+  padding-bottom: var(--spacing-3xl);
+}
+
+@media (min-width: 768px) {
+  .section-spacing {
+    padding-top: var(--spacing-4xl);
+    padding-bottom: var(--spacing-4xl);
+  }
+}
+
+/**
+ * ANIMATIONS
+ */
+
+/* Smooth transitions */
+.transition-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover lift effect */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+/* Focus visible styles for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-accent-blue);
+  outline-offset: 2px;
+}
+
+/**
+ * ACCESSIBILITY
+ */
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
